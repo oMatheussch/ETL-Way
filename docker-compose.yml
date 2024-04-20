@@ -1,0 +1,25 @@
+# Use postgres/example user/password credentials
+version: '3.9'
+
+services:
+
+  data-base:
+    image: postgres
+    restart: always
+
+    volumes:
+      - ./instnwnd.sql:/docker-entrypoint-initdb.d/instnwnd.sql
+
+    shm_size: 64mb
+
+    environment:
+      POSTGRES_PASSWORD: admin
+
+    ports:
+      - 5432:5432
+  #adminer:
+  #  image: adminer
+  #  restart: always
+  #  ports:
+  #    - 8080:8080
+  #
